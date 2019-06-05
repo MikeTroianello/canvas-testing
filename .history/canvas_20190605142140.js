@@ -41,7 +41,7 @@ var ctx = canvas.getContext('2d');
 //MOVING CIRCLE
 
 class Circle {
-  constructor(x, y, dx, dy, radius, color) {
+  constructor(x, y, dx, dy, radius) {
     this.x = x;
     this.y = y;
     this.dx = dx;
@@ -50,9 +50,11 @@ class Circle {
     this.draw = function() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-      ctx.strokeStyle = color;
+      ctx.strokeStyle = `rgba(${Math.floor(Math.random() * 255)},${Math.floor(
+        Math.random() * 255
+      )},${Math.floor(Math.random() * 255)}, ${Math.random()}`;
+
       ctx.stroke();
-      ctx.fillStyle = color;
       ctx.fill();
     };
     this.update = function() {
@@ -78,10 +80,7 @@ for (let i = 0; i < 200; i++) {
   let y = Math.random() * (innerHeight - r * 2) + r;
   let dx = (Math.random() - 0.5) * 5;
   let dy = (Math.random() - 0.5) * 5;
-  let color = `rgba(${Math.floor(Math.random() * 255)},${Math.floor(
-    Math.random() * 255
-  )},${Math.floor(Math.random() * 255)}, ${Math.random()}`;
-  circleArray.push(new Circle(x, y, dx, dy, r, color));
+  circleArray.push(new Circle(x, y, dx, dy, r));
 }
 
 console.log(circleArray);

@@ -52,8 +52,7 @@ class Circle {
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
       ctx.strokeStyle = color;
       ctx.stroke();
-      ctx.fillStyle = color;
-      ctx.fill();
+      // ctx.fill();
     };
     this.update = function() {
       if (this.x + radius >= innerWidth || this.x - radius <= 0) {

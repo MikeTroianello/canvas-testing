@@ -6,12 +6,47 @@ canvas.height = window.innerHeight;
 
 var ctx = canvas.getContext('2d');
 
+// for (let i = 0; i < canvas.width; i++) {
+//   ctx.fillStyle = `rgba(${i}, ${i}, ${i * 30}, 1)`;
+//   ctx.fillRect(i * 100, i * 100, 100, 100);
+// }
+
+//Line
+
+// ctx.beginPath();
+// ctx.moveTo(50, 300);
+// ctx.lineTo(300, 100);
+// ctx.lineTo(400, 300);
+// ctx.strokeStyle = 'blue';
+// ctx.stroke();
+
+//arc
+// ctx.beginPath();
+// ctx.arc(300, 300, 30, 0, Math.PI * 2, false);
+// ctx.strokeStyle = 'red';
+// ctx.stroke();
+
+// for (let i = 0; i < 1009; i++) {
+//   var x = Math.random() * window.innerWidth;
+//   var y = Math.random() * window.innerHeight;
+//   var r = Math.floor(Math.random() * 255);
+//   ctx.beginPath();
+//   ctx.arc(x, y, 30, 0, Math.PI * 2, false);
+//   ctx.strokeStyle = `rgba(${Math.floor(Math.random() * 255)},${Math.floor(
+//     Math.random() * 255
+//   )},${Math.floor(Math.random() * 255)}, ${Math.random()}`;
+//   ctx.stroke();
+// }
+
+//MOVING CIRCLES
+
 var mouse = {
   x: undefined,
   y: undefined
 };
 
 let maxRadius = 50;
+// let minRadius = 10;
 
 window.addEventListener('mousemove', function(event) {
   mouse.x = event.x;
@@ -21,8 +56,6 @@ window.addEventListener('mousemove', function(event) {
 window.addEventListener('resize', function() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
-  init();
 });
 
 class Circle {
@@ -72,12 +105,13 @@ class Circle {
   }
 }
 
-var circleArray = [];
-
 function init() {
-  circleArray = [];
+  var circleArray = [];
+
   for (let i = 0; i < 200; i++) {
     let r = Math.random() * 15 + 1;
+    // let r = Math.random() * 3 + 1;
+    // let r = 10;
     let x = Math.random() * (innerWidth - r * 2) + r;
     let y = Math.random() * (innerHeight - r * 2) + r;
     let dx = (Math.random() - 0.5) * 5;
@@ -98,5 +132,4 @@ function animate() {
   }
 }
 
-init();
 animate();
